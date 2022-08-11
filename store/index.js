@@ -4,21 +4,21 @@ export const state = () => ({
 })
 
 export const getters = {
-    getInventory(state) {
+    getInventory(state) { //NOSONAR
         return state._inventory    
     },
-    getProductsList(state) {
+    getProductsList(state) { //NOSONAR
         return state._products
     }
 }
 
 export const mutations = {
-    addArticle(state, art) {
+    addArticle(state, art) { //NOSONAR
         let i = state._inventory.findIndex((el) => el.art_id === art.art_id)
         if(i < 0 ){
             state._inventory.push(art)
         } else {
-            let n = parseInt(state._inventory[i]["stock"] + art.stock)
+            let n = parseInt(state._inventory[i]["stock"]) + parseInt(art.stock)
             state._inventory[i]["stock"] = n
         }
         console.log(state._inventory)

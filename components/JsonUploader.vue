@@ -1,5 +1,5 @@
 <template>
-    <input type="file" @change="uploadFile" accept=".json">
+    <input type="file" @change="uploadFile" accept=".json" ref="fileUploader">
 </template>
 
 <script>
@@ -12,12 +12,14 @@ export default {
     },
     methods: {
         uploadFile(e) {
+            let _this = this
             this.file = e.target.files[0];
             const reader = new FileReader();
             if (this.file.name.includes(".json")) {
                 reader.onload = (res) => {
                     this.content = JSON.parse(res.target.result);
                     this.loadArticles(this.content.inventory)
+                    _this.$refs.fileUploader.value = null
                 };
                 reader.onerror = (err) => console.log(err);
                 reader.readAsText(this.file);
