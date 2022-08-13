@@ -15,7 +15,7 @@
                 <NuxtLink class="text-decoration-none" to="/inventory">See Inventory</NuxtLink>
               </v-btn>
               <v-btn text color="primary">
-                <NuxtLink class="text-decoration-none" to="/">See Products</NuxtLink>
+                <NuxtLink class="text-decoration-none" to="/soldProducts">See Sold Products</NuxtLink>
               </v-btn>
             </v-col>
           </v-row>      

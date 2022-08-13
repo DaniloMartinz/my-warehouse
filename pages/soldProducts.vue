@@ -2,7 +2,7 @@
   <v-container class="grey lighten-5" fill-height fluid>
     <v-row>
   	  <v-col cols="12" md="8" offset-md="2">
-        <my-table :header="tableTitle" :headers="headers" :items="inventory"></my-table>
+        <my-table :header="tableTitle" :headers="headers" :items="productsSold"></my-table>
       </v-col>
     </v-row>
   </v-container>
@@ -16,23 +16,24 @@
     },
     data() {
         return {
-            tableTitle: 'Inventory',
+            tableTitle: 'Sold Products',
             headers: [
                 {
-                    text: 'Article Id',
+                    text: 'Product Id',
                     align: 'start',
                     filterable: true,
-                    value: 'art_id',
+                    value: 'prod_id',
                 },
                 { text: 'Name', value: 'name' },
-                { text: 'Stock', value: 'stock' }
-            ], 
+                { text: 'Qty Sold', value: 'sold' },
+                { text: 'Unit. Price', value: 'price' }
+            ],
         }
     },
     computed: {
-        inventory() {
-            return this.$store.getters.getInventory
+        productsSold() {
+            return this.$store.getters.getSales
         }
-    }
+    } 
   }
 </script> 

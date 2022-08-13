@@ -10,6 +10,9 @@ export const getters = {
     },
     getProductsList(state) { //NOSONAR
         return state._products
+    },
+    getSales(state) { //NOSONAR
+        return state._sales    
     }
 }
 
@@ -24,7 +27,7 @@ export const mutations = {
         }
     },
     addProduct(state, prod) { //NOSONAR
-        let i = state._inventory.findIndex((el)=> el.name === prod.name)
+        let i = state._products.findIndex((el)=> el.prod_id === prod.prod_id)
         if (i < 0){
             state._products.push(prod)
         }
@@ -37,7 +40,20 @@ export const mutations = {
             })
             prod["current_stock"] = Math.min.apply(Math, arr)
         })
-        return state._products
+    },
+    removeArticleFromStock(state, item) { //NOSONAR
+        let i = state._inventory.findIndex((el) => el.art_id === item.art_id)
+        let n = parseInt(state._inventory[i]["stock"]) - parseInt(item.amount_of)
+        state._inventory[i]["stock"] = n
+    },
+    addProductToSales(state, prod) { //NOSONAR
+        let i = state._sales.findIndex((el)=> el.prod_id === prod.prod_id)
+        if(i < 0) {
+            prod["sold"] = 1
+            state._sales.push(prod)
+        } else {
+            state._sales[i]["sold"]++
+        }
     }
 }
 
@@ -50,5 +66,11 @@ export const actions = {
     },
     updateProductStock(context) {
         context.commit('updateProductStock')
+    },
+    removeArticleFromStock(context, item) {
+        context.commit('removeArticleFromStock', item)
+    },
+    addProductToSales(context, prod) {
+        context.commit('addProductToSales', prod)
     }
 }

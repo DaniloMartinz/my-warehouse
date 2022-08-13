@@ -22,7 +22,7 @@
                         <v-divider class="mx-4"></v-divider>
                         <v-card-actions>
                             <v-badge color="green" :content="prod.current_stock" overlap inline bordered>
-                                <v-btn color="teal" text :disabled="prod.current_stock < 1" @click="discardFromStock(prod)">Sell</v-btn>
+                                <v-btn color="teal" text :disabled="prod.current_stock < 1" @click="sellProduct(prod)">Sell</v-btn>
                             </v-badge>
                         </v-card-actions>
                     </v-card>
@@ -54,9 +54,16 @@ export default {
         }
     },
     methods: {
-        discardFromStock(item) {
-            console.log(item)
+        sellProduct(item){
+            this.$store.dispatch('addProductToSales', item)
+            this.discardArticlesFromStock(item)
+        },
+        discardArticlesFromStock(item) {
+            item.contain_articles.forEach(art => {
+                this.$store.dispatch('removeArticleFromStock', art)
+            })
         }
+        
     }
 }
 </script>
