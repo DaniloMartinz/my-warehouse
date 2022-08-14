@@ -3,7 +3,7 @@
         <v-btn class="ma-2" color="primary" dark text small>
             <label for="upload">
                 <input type="file" @change="uploadFile" accept=".json" ref="fileUploader" style="display:none" id="upload">
-                <v-icon v-if="showIcon" small>mdi-upload</v-icon>&nbsp;&nbsp;{{ label }}
+                <v-icon small>mdi-upload</v-icon>&nbsp;&nbsp;{{ label }}
             </label>
       </v-btn>
     </div>
@@ -19,11 +19,7 @@ export default {
         }
     },
     props: {
-        label: String,
-        showIcon: {
-            type: Boolean,
-            default: false
-        }
+        label: String
     },
     methods: {
         uploadFile(e) {

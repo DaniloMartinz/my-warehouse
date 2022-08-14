@@ -2,7 +2,7 @@
     <v-card >
         <v-toolbar dark color="info" dense>
             <v-icon>mdi-cart-heart</v-icon>
-            <v-toolbar-title>&nbsp;Products</v-toolbar-title>
+            <v-toolbar-title>&nbsp;{{ header }}</v-toolbar-title>
         </v-toolbar>
         <v-container fluid>
             <v-row v-if="products.length > 0">
@@ -10,13 +10,13 @@
                     <v-card>        
                         <v-img class="white--text align-end" height="200px"
                         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                        src="https://www.ikea.com/es/en/images/products/lagkapten-adils-desk-white-black__1159362_pe888443_s5.jpg?f=xl"
+                        :src="imgSrc"
                         >
                         <v-card-title>{{ prod.name }}</v-card-title>
                         </v-img>
                         <v-card-subtitle class="pb-0">Model</v-card-subtitle>
                         <v-card-text class="text--primary">
-                            <div>{{prod.price}} €</div>
+                            <div>{{prod.price}}&nbsp;€</div>
                             <div>Velit aliquet sagittis id consectetur</div>
                         </v-card-text>
                         <v-divider class="mx-4"></v-divider>
@@ -26,7 +26,6 @@
                             </v-badge>
                         </v-card-actions>
                     </v-card>
-                    
                 </v-col> 
             </v-row>
             <v-row  v-else>
@@ -44,7 +43,7 @@ export default {
     data() {
         return {
             header: "Products",
-            content: null
+            imgSrc: "https://www.ikea.com/es/en/images/products/lagkapten-adils-desk-white-black__1159362_pe888443_s5.jpg?f=xl"
         }
     },
     computed :{

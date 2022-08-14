@@ -6,7 +6,7 @@
             </NuxtLink>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <json-uploader label="Import data from Json" show-icon="true"></json-uploader>
+        <json-uploader label="Import data from Json"></json-uploader>
     </v-app-bar>
 </template>
 
