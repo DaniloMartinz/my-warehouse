@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-toolbar color="teal lighten-3" dense>
+        <v-toolbar color="info" dark dense>
             <v-toolbar-title><v-icon>mdi-format-list-bulleted-square</v-icon>&nbsp{{ header }}</v-toolbar-title>
         </v-toolbar>
         <v-card-title>

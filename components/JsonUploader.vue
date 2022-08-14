@@ -1,20 +1,28 @@
 <template>
     <div>
-        <v-btn class="ma-2" color="indigo" dark text>
+        <v-btn class="ma-2" color="primary" dark text small>
             <label for="upload">
                 <input type="file" @change="uploadFile" accept=".json" ref="fileUploader" style="display:none" id="upload">
-                <v-icon dark>mdi-cloud-upload</v-icon>
+                <v-icon v-if="showIcon" small>mdi-upload</v-icon>&nbsp;&nbsp;{{ label }}
             </label>
       </v-btn>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
             file: null,
             content: null
+        }
+    },
+    props: {
+        label: String,
+        showIcon: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
