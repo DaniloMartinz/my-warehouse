@@ -1,5 +1,10 @@
 # my-warehouse
 
+My warehouse is a prototype app for the administration of a warehouse, where articles are listed, and the sold products are recorded.
+
+The app is written in JavaScript using [Nuxt](https://nuxtjs.org/) over [VueJS](https://vuejs.org/).  
+[Vuex](https://vuex.vuejs.org/) is used for the data store and [VuetifyJS](https://vuetifyjs.com/en/) is used as a design framework. 
+
 ## Build Setup
 
 ```bash
@@ -8,6 +13,9 @@ $ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
+
+# build for production and launch server
+$ npm run test
 
 # build for production and launch server
 $ npm run build
